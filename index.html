@@ -8,6 +8,26 @@
     <title></title>
 </head>
 <body>
+    <div id="app" class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Lista contatti -->
+                <ul class="list-group">
+                    <li v-for="contact in contacts" :key="contact.name" class="list-group-item d-flex align-items-center">
+                        <img :src="contact.avatar" alt="avatar" class="mr-3 rounded-circle" style="width: 50px; height: 50px;">
+                        <span>{{ contact.name }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <!-- Sezione per i messaggi -->
+                <div class="messages">
+                    <!-- Messaggi  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./script.js"></script>
 </body>
