@@ -164,9 +164,17 @@ const app = Vue.createApp({
                     ],
                     }
                     
-            ]
-        };
+            ],
+
+        activeContact: false
+    };
+},
+methods: {
+    setActiveContact(contact) {
+        this.activeContact = contact;
     }
+}
 });
 
 app.mount('#app');
+

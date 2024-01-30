@@ -13,18 +13,23 @@
             <div class="col-md-4">
                 <!-- Lista contatti -->
                 <ul class="list-group">
-                    <li v-for="contact in contacts" :key="contact.name" class="list-group-item d-flex align-items-center">
+                    <li v-for="contact in contacts" :key="contact.name" class="list-group-item d-flex align-items-center" @click="setActiveContact(contact)">
                         <img :src="contact.avatar" alt="avatar" class="mr-3 rounded-circle" style="width: 50px; height: 50px;">
                         <span>{{ contact.name }}</span>
                     </li>
                 </ul>
+                <!-- Messaggi -->               
             </div>
             <div class="col-md-8">
-                <!-- Sezione per i messaggi -->
-                <div class="messages">
-                    <!-- Messaggi  -->
+                <div class="messages p-3" style="height: 400px; overflow-y: scroll;">
+                    <div v-for="message in activeContact.messages" :key="message.date" :class="{'text-right': message.status === 'sent', 'text-left': message.status === 'received'}">
+                        <span class="badge" :class="{'badge-success': message.status === 'sent', 'badge-light': message.status === 'received'}">
+                            {{ message.message }}
+                        </span>
+                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
     
