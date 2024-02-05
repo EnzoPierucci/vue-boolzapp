@@ -122,10 +122,11 @@
                 </div>
 
                 <!-- Messaggi -->
-                <div class="messages flex-grow-1 overflow-y-scroll p-3" id="col-right-chat">
+                <div class="flex-grow-1 overflow-y-scroll p-3" id="col-right-chat">
                   <div v-for="message in contacts[activeContactIndex].messages" 
                   :key="message.date" :class="{'text-right': message.status === 'sent', 'text-left': message.status === 'received'}">
-                      <span class="badge" :class="{'badge-success': message.status === 'sent', 'badge-light': message.status === 'received'}">
+                      <span class="badge m-0 sent received p-3 rounded  mb-4" 
+                      :class="{'badge-success': message.status === 'sent', 'badge-light': message.status === 'received'}">
                           {{ message.message }}
                       </span>
                   </div>
