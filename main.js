@@ -166,15 +166,39 @@ const app = Vue.createApp({
                     
             ],
 
-        activeContact: false
+            activeContactIndex: 0,
+            newMessage: '',
+            
     };
 },
 methods: {
-    setActiveContact(contact) {
-        this.activeContact = contact;
+    setActiveContact(index) {
+        this.activeContactIndex = index;
+    },
+    sendMessage() {
+        if (this.newMessage.trim() !== '') {
+            const activeContact = this.contacts[this.activeContactIndex];
+            const newMsg = {
+                date: new Date().toLocaleString('it-IT'),
+                message: this.newMessage,
+                status: 'sent'
+            };
+            activeContact.messages.push(newMsg);
+
+        
+            this.newMessage = '';
+
+            
+            setTimeout(() => {
+                const replyMsg = {
+                    date: new Date().toLocaleString('it-IT'),
+                    message: 'Scusami ora sono impegnato non possso rispondere',
+                    status: 'received'
+                };
+                activeContact.messages.push(replyMsg);
+            }, 1000);
+        }
     }
 }
-});
-
-app.mount('#app');
+}).mount('#app');
 
