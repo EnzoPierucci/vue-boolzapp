@@ -169,8 +169,10 @@ const app = Vue.createApp({
             activeContactIndex: 0,
             newMessage: '',
             
+            
     };
 },
+
 methods: {
     setActiveContact(index) {
         this.activeContactIndex = index;
@@ -197,6 +199,7 @@ methods: {
                 };
                 activeContact.messages.push(replyMsg);
             }, 1000);
+            
         }
     }
 }
