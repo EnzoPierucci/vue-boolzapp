@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title></title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
+    integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=='
+    crossorigin='anonymous' />
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css'
+    integrity='sha512-tx5+1LWHez1QiaXlAyDwzdBTfDjX07GMapQoFTS74wkcPMsI3So0KYmFe6EHZjI8+eSG0ljBlAQc3PQ5BTaZtQ=='
+    crossorigin='anonymous' />
+
+
+<link rel="stylesheet" href="./style.css">    
+<title>Boolzapp</title>
 </head>
 <body>
     <div id="app" class="container mt-4">
@@ -13,27 +21,31 @@
             <div class="col-md-4">
                 <!-- Lista contatti -->
                 <ul class="list-group">
-                    <li v-for="contact in contacts" :key="contact.name" class="list-group-item d-flex align-items-center" @click="setActiveContact(contact)">
+                    <li v-for="(contact, index) in contacts" :key="contact.name" class="list-group-item d-flex align-items-center" @click="setActiveContact(index)">
                         <img :src="contact.avatar" alt="avatar" class="mr-3 rounded-circle" style="width: 50px; height: 50px;">
                         <span>{{ contact.name }}</span>
                     </li>
                 </ul>
-                <!-- Messaggi -->               
             </div>
             <div class="col-md-8">
-                <div class="messages p-3" style="height: 400px; overflow-y: scroll;">
-                    <div v-for="message in activeContact.messages" :key="message.date" :class="{'text-right': message.status === 'sent', 'text-left': message.status === 'received'}">
+                <!-- Messaggi -->
+                <div class="messages p-3">
+                    <div v-for="message in contacts[activeContactIndex].messages" :key="message.date" :class="{'text-right': message.status === 'sent', 'text-left': message.status === 'received'}">
                         <span class="badge" :class="{'badge-success': message.status === 'sent', 'badge-light': message.status === 'received'}">
                             {{ message.message }}
                         </span>
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./script.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'
+    integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+    crossorigin='anonymous'></script>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+
+    <script src="./main.js"></script>
 </body>
 </html>
